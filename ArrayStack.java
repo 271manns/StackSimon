@@ -76,9 +76,9 @@ public class ArrayStack<T> implements StackInterface<T>
     {
         for(int i = size; i>=0; i--)
         {
-            if(log[i-1]== o)
+            if(log[i].equals(o))
             {
-                return i;
+                return size-i;
             }
         }
         return -1;
