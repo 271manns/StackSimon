@@ -41,7 +41,7 @@ public class LinkedStack<T> implements StackInterface<T>
     {
         LLNode<T> temp = new LLNode<T>(item);
         temp.setLink(log);
-        log = temp; 
+        log = temp;
         size++;
         return item;
         
@@ -58,7 +58,7 @@ public class LinkedStack<T> implements StackInterface<T>
         {
             if(temp.getInfo().equals(o))
             {
-                return i+1; 
+                return i+1;
             }
             temp = temp.getLink();
         }
