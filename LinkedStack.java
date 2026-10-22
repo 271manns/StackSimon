@@ -22,10 +22,7 @@ public class LinkedStack<T> implements StackInterface<T>
         {
             throw new StackUnderflowException();
         }
-        else
-        {
-            return log.getLink().getInfo();
-        }
+        return log.getInfo();
     }
     public T pop() throws StackUnderflowException
     {
@@ -33,33 +30,25 @@ public class LinkedStack<T> implements StackInterface<T>
         {
             throw new StackUnderflowException();
         }
-        else if(size == 1)
-        {
-            T temp = log.getLink().getInfo();
-            size--;
-            log = null;
-            return temp;
-            
-        }
-        else
-        {
-            T temp = log.getLink().getInfo();
-            log.setLink(log.getLink().getLink());
-            size--;
-            return temp;
-
-        }
+        T temp = log.getInfo();
+        log = log.getLink();
+        size--;
+        return temp; 
+        
+     
     }
     public T push(T item)
     {
         LLNode<T> temp = new LLNode<T>(item);
-        log.setLink(temp);
+        temp.setLink(log);
+        log = temp; 
         size++;
         return item;
+        
     }
     public void clear()
     {
-        log.setLink(null);
+        log = null;
         size = 0;
     }
     public int search(Object o)
@@ -69,7 +58,7 @@ public class LinkedStack<T> implements StackInterface<T>
         {
             if(temp.getInfo().equals(o))
             {
-                return i; 
+                return i+1; 
             }
             temp = temp.getLink();
         }
